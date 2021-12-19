@@ -3,13 +3,13 @@ package com.codegym.model;
 public class Setting {
     String language;
     String pageSize;
-    String spamsFilter;
+    boolean spamsFilter;
     String signature;
 
     public Setting() {
     }
 
-    public Setting(String language, String pageSize, String spamsFilter, String signature) {
+    public Setting(String language, String pageSize, boolean spamsFilter, String signature) {
         this.language = language;
         this.pageSize = pageSize;
         this.spamsFilter = spamsFilter;
@@ -32,11 +32,11 @@ public class Setting {
         this.pageSize = pageSize;
     }
 
-    public String isSpamsFilter() {
+    public boolean isSpamsFilter() {
         return spamsFilter;
     }
 
-    public void setSpamsFilter(String spamsFilter) {
+    public void setSpamsFilter(boolean spamsFilter) {
         this.spamsFilter = spamsFilter;
     }
 

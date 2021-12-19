@@ -42,35 +42,28 @@
         <form:label path="spamsFilter">Spams filter:</form:label>
       </td>
       <td>
-<%--        <form:checkbox path="spamsFilter"></form:checkbox>--%>
+        <form:checkbox path="spamsFilter" value="true"></form:checkbox>Enable spams filter
+<%--        checkbox không được chứa giá trị giống ở dưới mà phải để ngoài giống ở trên nếu không sẽ bị lỗi--%>
+<%--        <form:checkbox path="spamsFilter" value="true">Enable spams filter</form:checkbox>--%>
       </td>
     </tr>
 
-<%--      <tr>--%>
-<%--        <td>--%>
-<%--          <form:label path="spamsFilter">Spams filter:</form:label>--%>
-<%--        </td>--%>
-<%--        <td>--%>
-<%--          <form:checkbox path="spamsFilter">Enable spams filter</form:checkbox>--%>
-<%--        </td>--%>
-<%--      </tr>--%>
+      <tr>
+        <td>
+          <form:label path="signature">Signature:</form:label>
+        </td>
+        <td>
+          <form:textarea path="signature"></form:textarea>
+        </td>
+      </tr>
 
-<%--      <tr>--%>
-<%--        <td>--%>
-<%--          <form:label path="signature">Signature:</form:label>--%>
-<%--        </td>--%>
-<%--        <td>--%>
-<%--          <form:textarea path="signature"></form:textarea>--%>
-<%--        </td>--%>
-<%--      </tr>--%>
-
-<%--      <tr>--%>
-<%--        <td></td>--%>
-<%--        <td>--%>
-<%--          <button type="submit">Updates</button>--%>
-<%--          <button>Cancel</button>--%>
-<%--        </td>--%>
-<%--      </tr>--%>
+      <tr>
+        <td></td>
+        <td>
+          <button type="submit">Updates</button>
+          <button>Cancel</button>
+        </td>
+      </tr>
     </table>
   </form:form>
   </body>
