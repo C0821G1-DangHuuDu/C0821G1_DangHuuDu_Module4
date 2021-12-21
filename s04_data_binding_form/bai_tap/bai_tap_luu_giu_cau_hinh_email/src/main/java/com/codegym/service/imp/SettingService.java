@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SettingService implements ISettingService {
     @Autowired
-    ISettingRepository settingRepository;
+    private ISettingRepository settingRepository;
 
 
     @Override

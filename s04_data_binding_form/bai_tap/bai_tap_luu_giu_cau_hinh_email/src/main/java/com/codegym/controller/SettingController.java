@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SettingController {
     @Autowired
-    ISettingService settingService;
+    private ISettingService settingService;
 
     @GetMapping("")
     public String show(Model model){
