@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<h5>Thông tin Blog cần chỉnh sửa:</h5>
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Content</td>
+        <td>Note</td>
+
+    </tr>
+    <tr>
+        <td th:text="${blog.id}"></td>
+        <td th:text="${blog.name}"></td>
+        <td th:text="${blog.content}"></td>
+        <td th:text="${blog.note}"></td>
+
+    </tr>
+</table>
+
+<h5>Chỉnh sửa Blog:</h5>
+<form action="/edit" method="post" th:object="${blog}">
+    <input type="hidden" th:field="*{id}" th:value="${blog.id}">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input th:field="*{name}">
+            </td>
+        </tr>
+        <tr>
+            <td>Content:</td>
+            <td>
+                <input th:field="*{content}">
+            </td>
+        </tr>
+        <tr>
+            <td>Note:</td>
+            <td>
+                <input th:field="*{note}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Edit</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
