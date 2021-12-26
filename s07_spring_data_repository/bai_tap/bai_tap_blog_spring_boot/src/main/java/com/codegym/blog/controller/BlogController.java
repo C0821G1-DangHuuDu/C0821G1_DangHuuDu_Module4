@@ -20,13 +20,13 @@ public class BlogController {
     @GetMapping("")
     public String listViewPage(Model model){
         model.addAttribute("blogList", blogService.findALL());
-        return "view";
+        return "/view";
     }
 
     @GetMapping("create")
     public String createPage (Model model){
         model.addAttribute("blog",new Blog());
-        return "create";
+        return "/create";
     }
 
     @PostMapping ("create")
@@ -37,16 +37,28 @@ public class BlogController {
     }
 
     @GetMapping("delete")
-    public String deleteBlog(@RequestParam("id")int id,RedirectAttributes redirectAttributes){
+    public String deleteBlog(@RequestParam("id")int id,Model model){
         blogService.remove(id);
-        redirectAttributes.addFlashAttribute("msg","Delete Blog successfully!");
-        return "redirect: ";
+        model.addAttribute("msg",blogService.findALL());
+        return "/view";
     }
 
     @GetMapping("edit")
     public String editPage (@RequestParam("id")Integer id, Model model){
-        model.addAttribute("product",blogService.findById(id));
-        return "edit";
+        model.addAttribute("blog",blogService.findById(id));
+        return "/edit";
     }
 
+    @PostMapping ("edit")
+    public String editBlog (@ModelAttribute ("blog")Blog blog, RedirectAttributes redirectAttributes){
+        blogService.save(blog);
+        redirectAttributes.addFlashAttribute("msg","Edit Blog successfully!");
+        return "redirect: ";
+    }
+
+    @PostMapping("find")
+    public String findByName(@RequestParam("nameFind")String name,Model model){
+        model.addAttribute("blogList", blogService.findByName(name));
+        return "/view";
+    }
 }

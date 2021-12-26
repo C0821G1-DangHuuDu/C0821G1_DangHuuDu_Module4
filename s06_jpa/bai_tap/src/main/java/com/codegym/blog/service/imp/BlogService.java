@@ -36,7 +36,21 @@ public class BlogService implements IBlogService {
     }
 
     @Override
-    public Optional<Blog> findById(Integer id) {
-        return iBlogRepository.findById(id);
+    public Blog findById(Integer id) {
+        Blog blog;
+        for (int i = 0; i < findALL().size(); i++) {
+            if (findALL().get(i).getId() == id) {
+                blog = findALL().get(i);
+                return blog;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Blog> findByName(String name) {
+        List<Blog> blogList = iBlogRepository.findByName("%"+name+"%");
+
+        return blogList;
     }
 }

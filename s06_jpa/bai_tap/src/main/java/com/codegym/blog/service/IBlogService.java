@@ -14,5 +14,7 @@ public interface IBlogService {
 
     void remove(int id);
 
-    Optional<Blog> findById(Integer id);
+    Blog findById(Integer id);
+
+    List<Blog> findByName(String name);
 }

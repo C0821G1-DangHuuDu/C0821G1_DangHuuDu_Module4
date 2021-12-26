@@ -8,6 +8,14 @@
 <h1>List Blog</h1>
 
 <p><a href="/create">Create Blog</a></p>
+
+<form action="find" method="post">
+    <p>Nhập tên cần tìm kiếm: </p>
+    <input th:type="text" name="nameFind">
+    <button ty>Find</button>
+
+</form>
+
 <p style="color: blue" th:text="${msg}"></p>
 
 <table border="1">
