@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List User</title>
+</head>
+<body>
+<h1>List Blog</h1>
+
+<p><a href="/create">Create User</a></p>
+
+</form>
+
+<p style="color: blue" th:text="${msg}"></p>
+
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Phone Number</td>
+        <td>Age</td>
+        <td>Email</td>
+        <td>Action</td>
+    </tr>
+    <tr th:each="user, iter : ${userPage}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.phoneNumber}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <a th:href="@{/edit/(id = ${user.id})}">Edit</a>
+            <a th:href="@{/delete/(id = ${user.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+<span>
+    <a th:if="${userPage.hasPrevious()}" th:href="@{/(page = ${userPage.number - 1})}">
+        Previous
+    </a>
+     <a th:if="${userPage.hasNext()}" th:href="@{/(page = ${userPage.number + 1})}">
+        Next
+    </a>
+    <p>
+        <span th:each="pageNo: ${#numbers.sequence(0,userPage.totalPages - 1)}">
+            <a th:href="@{/(page = ${pageNo})}" th:text="${pageNo}"></a>
+        </span>
+    </p>
+</span>
+</body>
+</html>
