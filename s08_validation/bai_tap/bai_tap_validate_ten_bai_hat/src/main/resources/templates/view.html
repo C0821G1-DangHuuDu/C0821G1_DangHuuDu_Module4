@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+</head>
+<body>
+<h1>List Blog</h1>
+
+<p><a href="/create">Create User</a></p>
+
+</form>
+
+<p style="color: blue" th:text="${msg}"></p>
+
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Singer</td>
+        <td>Type Of Music</td>
+        <td>Action</td>
+    </tr>
+    <tr th:each="music, iter : ${musicPage}">
+        <td th:text="${music.id}"></td>
+        <td th:text="${music.name}"></td>
+        <td th:text="${music.singer}"></td>
+        <td th:text="${music.typeOfMusic}"></td>
+        <td>
+            <a th:href="@{/edit/(id = ${music.id})}">Edit</a>
+        </td>
+    </tr>
+</table>
+<span>
+    <a th:if="${musicPage.hasPrevious()}" th:href="@{/(page = ${musicPage.number - 1})}">
+        Previous
+    </a>
+     <a th:if="${musicPage.hasNext()}" th:href="@{/(page = ${musicPage.number + 1})}">
+        Next
+    </a>
+    <p>
+        <span th:each="pageNo: ${#numbers.sequence(0,musicPage.totalPages - 1)}">
+            <a th:href="@{/(page = ${pageNo})}" th:text="${pageNo}"></a>
+        </span>
+    </p>
+</span>
+
+</body>
+</html>

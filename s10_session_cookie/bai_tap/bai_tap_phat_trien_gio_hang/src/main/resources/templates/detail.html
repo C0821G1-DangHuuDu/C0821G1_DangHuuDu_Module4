@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Product</title>
+</head>
+<body>
+<h1>Chi tiết sản phẩm</h1>
+<form action="add" method="post" th:object="${product}">
+    <p>ID:</p>
+    <p th:text="${product.id}" th:field="*{id}"></p>
+    <p>Name:</p>
+    <p th:text="${product.name}" th:field="*{name}"></p>
+    <p>Price:</p>
+    <p th:text="${product.price}" th:field="*{price}"></p>
+    <p>Detail:</p>
+    <p th:text="${product.detail}" th:field="*{detail}"></p>
+    <button type="submit">Add</button>
+</form>
+
+<!--<p>ID:</p>-->
+<!--<p th:text="${product.id}" ></p>-->
+<!--<p>Name:</p>-->
+<!--<p th:text="${product.name}"></p>-->
+<!--<p>Price:</p>-->
+<!--<p th:text="${product.price}"></p>-->
+<!--<p>Detail:</p>-->
+<!--<p th:text="${product.detail}"></p>-->
+<!--<p>ID:</p>-->
+<!--<p th:text="${product.id}" th:field="*{id}"></p>-->
+<!--<p>Name:</p>-->
+<!--<p th:text="${product.name}" th:field="*{name}"></p>-->
+<!--<p>Price:</p>-->
+<!--<p th:text="${product.price}" th:field="*{price}"></p>-->
+<!--<p>Detail:</p>-->
+<!--<p th:text="${product.detail}" th:field="*{detail}"></p>-->
+</body>
+</html>

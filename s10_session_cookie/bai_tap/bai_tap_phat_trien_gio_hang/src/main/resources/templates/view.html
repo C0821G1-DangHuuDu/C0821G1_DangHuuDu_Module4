@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Page</title>
+</head>
+<body>
+<h1>Danh sách sản phẩm</h1>
+</form>
+
+<p style="color: blue" th:text="${msg}"></p>
+
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Action</td>
+    </tr>
+    <tr th:each="product, iter : ${productPage}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+        <td>
+            <a th:href="@{/detail/(id = ${product.id})}">Detail</a>
+        </td>
+    </tr>
+</table>
+<span>
+    <a th:if="${productPage.hasPrevious()}" th:href="@{/(page = ${productPage.number - 1})}">
+        Previous
+    </a>
+     <a th:if="${productPage.hasNext()}" th:href="@{/(page = ${productPage.number + 1})}">
+        Next
+    </a>
+    <p>
+        <span th:each="pageNo: ${#numbers.sequence(0,productPage.totalPages - 1)}">
+            <a th:href="@{/(page = ${pageNo})}" th:text="${pageNo}"></a>
+        </span>
+    </p>
+</span>
+
+</body>
+</html>

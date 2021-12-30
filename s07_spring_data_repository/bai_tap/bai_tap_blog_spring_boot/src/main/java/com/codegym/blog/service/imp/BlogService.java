@@ -4,6 +4,8 @@ import com.codegym.blog.model.Blog;
 import com.codegym.blog.repository.IBlogRepository;
 import com.codegym.blog.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -52,5 +54,10 @@ public class BlogService implements IBlogService {
         List<Blog> blogList = iBlogRepository.findByName("%"+name+"%");
 
         return blogList;
+    }
+
+    @Override
+    public Page<Blog> findAll(Pageable of) {
+        return iBlogRepository.findAll(of);
     }
 }

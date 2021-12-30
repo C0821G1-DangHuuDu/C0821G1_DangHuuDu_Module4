@@ -4,6 +4,9 @@ import com.codegym.blog.model.Blog;
 import com.codegym.blog.service.IBlogService;
 import com.codegym.blog.service.imp.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +21,10 @@ public class BlogController {
     private IBlogService blogService;
 
     @GetMapping("")
-    public String listViewPage(Model model){
-        model.addAttribute("blogList", blogService.findALL());
+    public String listViewPage(Model model, @RequestParam(value = "page", defaultValue = "0")int page){
+        Sort sort = Sort.by("id").descending();
+        Page<Blog> blogPage = blogService.findAll(PageRequest.of(page,5,sort));
+        model.addAttribute("blogPage", blogPage);
         return "/view";
     }
 
@@ -61,4 +66,6 @@ public class BlogController {
         model.addAttribute("blogList", blogService.findByName(name));
         return "/view";
     }
+
+
 }

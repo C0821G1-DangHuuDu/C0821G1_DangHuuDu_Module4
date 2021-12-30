@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,11 +34,15 @@ public class UserController {
     @GetMapping("create")
     public String createPage(Model model){
         model.addAttribute("user", new UserDto());
-        return "/create";
+        return "create";
     }
 
     @PostMapping("create")
-    public String createNewUser(@Valid @ModelAttribute("user")UserDto userDto, RedirectAttributes redirectAttributes){
+    public String createNewUser(@Valid @ModelAttribute("user")UserDto userDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        new UserDto().validate(userDto, bindingResult);
+        if(bindingResult.hasErrors()){
+            return "/create";
+        }
         userService.createNewUser(userDto);
         redirectAttributes.addFlashAttribute("msg","Create new User successful!");
         return "redirect: ";
