@@ -69,13 +69,13 @@ public class MusicDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         MusicDto musicDto = (MusicDto) target;
-        if(!musicDto.name.matches("[!@#$%^&*()-+,.=;]")){
+        if(musicDto.name.matches("[!@#$%^&*()-+,.=;]")){
             errors.rejectValue("name","name.invalidFormat");
         }
-        if(!musicDto.singer.matches("[!@#$%^&*()-+,.=;]")){
+        if(musicDto.singer.matches("[!@#$%^&*()-+,.=;]")){
             errors.rejectValue("singer","singer.invalidFormat");
         }
-        if(!musicDto.typeOfMusic.matches("[!@#$%^&*()-+.=;]")){
+        if(musicDto.typeOfMusic.matches("[!@#$%^&*()-+.=;]")){
             errors.rejectValue("typeOfMusic","typeOfMusic.invalidFormat");
         }
     }

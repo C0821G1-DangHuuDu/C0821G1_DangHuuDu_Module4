@@ -8,13 +8,20 @@
 <h1>Chi tiết sản phẩm</h1>
 <form action="add" method="post" th:object="${product}">
     <p>ID:</p>
-    <p th:text="${product.id}" th:field="*{id}"></p>
+    <p th:text="${product.id}"></p>
+    <input type="hidden" th:field="*{id}" th:value="${product.id}">
     <p>Name:</p>
-    <p th:text="${product.name}" th:field="*{name}"></p>
+    <p th:text="${product.name}"></p>
+<!--    <input type="hidden" th:field="*{name}" th:value="${product.name}">-->
     <p>Price:</p>
-    <p th:text="${product.price}" th:field="*{price}"></p>
+    <p th:text="${product.price}"></p>
+<!--    <input type="hidden" th:field="*{price}" th:value="${product.price}">-->
     <p>Detail:</p>
-    <p th:text="${product.detail}" th:field="*{detail}"></p>
+    <p th:text="${product.detail}"></p>
+<!--    <input type="hidden" th:field="*{detail}" th:value="${product.detail}">-->
+
+    <p>Nhập số lượng muốn mua:</p>
+    <input type="number" th:field="*{quantity}">
     <button type="submit">Add</button>
 </form>
 

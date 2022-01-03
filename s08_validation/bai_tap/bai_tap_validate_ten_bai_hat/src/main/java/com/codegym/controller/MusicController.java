@@ -44,7 +44,7 @@ public class MusicController {
         }
         musicService.save(musicDto);
         redirectAttributes.addFlashAttribute("msg","Create new Music successful!");
-        return "redirect: ";
+        return "redirect:/";
     }
     @GetMapping("edit")
     public String editPage(@RequestParam("id")Integer id,Model model){
@@ -55,10 +55,10 @@ public class MusicController {
     public String editMusic (@Valid @ModelAttribute("music") MusicDto musicDto, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         new MusicDto().validate(musicDto, bindingResult);
         if(bindingResult.hasErrors()){
-            return "/create";
+            return "/edit";
         }
         musicService.save(musicDto);
         redirectAttributes.addFlashAttribute("msg","Edit Music successful!");
-        return "redirect: ";
+        return "redirect:/";
     }
 }

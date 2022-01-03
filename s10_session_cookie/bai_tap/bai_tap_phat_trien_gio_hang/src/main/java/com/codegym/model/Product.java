@@ -12,6 +12,7 @@ public class Product {
     private String name;
     private Double price;
     private String detail;
+    private Integer quantity;
 
     public Product() {
     }
@@ -21,6 +22,22 @@ public class Product {
         this.name = name;
         this.price = price;
         this.detail = detail;
+    }
+
+    public Product(Integer id, String name, Double price, String detail, Integer quantity) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.detail = detail;
+        this.quantity = quantity;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public Integer getId() {

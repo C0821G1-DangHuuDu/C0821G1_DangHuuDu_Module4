@@ -20,6 +20,6 @@ public class ProductService implements IProductService {
 
     @Override
     public Product findById(Integer id) {
-        return productRepository.getById(id);
+        return productRepository.findById(id).orElse(null);
     }
 }

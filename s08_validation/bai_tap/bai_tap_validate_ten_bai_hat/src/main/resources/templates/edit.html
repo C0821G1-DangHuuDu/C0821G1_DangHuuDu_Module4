@@ -22,7 +22,7 @@
     </tr>
 </table>
 
-<form action="edit" method="post" th:object="${music}">
+<form action="/edit" method="post" th:object="${music}">
     <input type="hidden" th:field="*{id}" th:value="${music.id}">
     <table>
         <tr>

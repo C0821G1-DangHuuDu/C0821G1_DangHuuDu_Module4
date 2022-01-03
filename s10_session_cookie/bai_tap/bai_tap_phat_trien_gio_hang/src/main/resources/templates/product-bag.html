@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ Hàng</title>
+</head>
+<body>
+<p><a href="/">Trang sản phẩm</a></p>
+<h1>Giỏ hàng</h1>
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Action</td>
+
+    </tr>
+    <tr th:each="product, iter : ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.quantity}"></td>
+        <td>
+            <a th:href="@{/product-bag/delete/(id = ${product.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+<p>Tổng tiền thanh toán:</p>
+<p th:text="${sum}"></p>
+</body>
+</html>

@@ -12,13 +12,11 @@ public class UserDto implements Validator {
 
     @NotNull (message = "Không được để trống id")
     private Integer id;
-    @NotNull (message = "Không được để trống firstName")
+
     @NotBlank (message = "Không được để trống firstName")
-    @NotEmpty (message = "Không được để trống firstName")
     private String firstName;
-    @NotNull (message = "Không được để trống lastName")
+
     @NotBlank (message = "Không được để trống lastName")
-    @NotEmpty (message = "Không được để trống lastName")
     private String lastName;
 
     private String phoneNumber;
