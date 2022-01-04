@@ -8,9 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping (value = "/blogRest")
@@ -26,6 +24,12 @@ public class BlogRestController {
         if(blogPage.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(blogPage,HttpStatus.OK);
+    }
+
+    @PostMapping (value = "/register")
+    public ResponseEntity<Object> registerBlog (@RequestBody Blog blog){
+        blogService.save(blog);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
