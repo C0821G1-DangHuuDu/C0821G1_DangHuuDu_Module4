@@ -13,7 +13,7 @@ age int,
 email varchar(50)
 );
 
-insert into user_manager value 
+insert into user value 
 (1, "dong", "nguyen", "0905111222",21,"dong@gmail.com"),
 (2, "dong", "van", "0905111333",22,"dongvan@gmail.com"),
 (3, "ba", "tran", "0905111444",23,"ba@gmail.com"),
