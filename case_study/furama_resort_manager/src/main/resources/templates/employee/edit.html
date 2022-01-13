@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+<h1>Employee need Edit</h1>
+<p><a href="/employee/list">Employee List</a></p>
+
+<table class="table table-info table-striped table-hover">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Day Of Birth</td>
+        <td>IdentityCard</td>
+        <td>Phone Number</td>
+        <td>Email</td>
+        <td>Address</td>
+        <td>Salary</td>
+        <td>Education Degree</td>
+        <td>Position</td>
+        <td>Division</td>
+
+    </tr>
+<!--    <tr th:each="employee, iter : ${employeePage}">-->
+        <td th:text="${employee.getId()}"></td>
+        <td th:text="${employee.getName()}"></td>
+        <td th:text="${employee.getBirthDay()}"></td>
+        <td th:text="${employee.getIdentityCard()}"></td>
+        <td th:text="${employee.getPhoneNumber()}"></td>
+        <td th:text="${employee.getEmail()}"></td>
+        <td th:text="${employee.getAddress()}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td th:text="${employee.educationDegree.educationDegreeName}"></td>
+        <td th:text="${employee.position.positionName}"></td>
+        <td th:text="${employee.division.divisionName}"></td>
+
+    </tr>
+</table>
+
+<h4>Edit Employee</h4>
+<form action="/employee/edit" method="post" th:object="${employee}">
+    <input type="hidden" th:name="id" th:value="${employee.getId()}">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input th:field="*{name}">
+            </td>
+        </tr>
+        <tr>
+            <td>Day Of Birth:</td>
+            <td>
+                <input th:field="*{birthDay}">
+            </td>
+        </tr>
+        <tr>
+            <td>IdentityCard:</td>
+            <td>
+                <input th:field="*{identityCard}">
+            </td>
+        </tr><tr>
+            <td>Phone Number:</td>
+            <td>
+                <input th:field="*{phoneNumber}">
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>
+                <input th:field="*{email}">
+            </td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td>
+                <input th:field="*{address}">
+            </td>
+        </tr>
+        <tr>
+            <td>Salary:</td>
+            <td>
+                <input th:field="*{salary}">
+            </td>
+        </tr>
+        <tr>
+            <td>Education Degree:</td>
+            <td>
+                <select th:field="*{educationDegree}">
+                    <option th:each="educationDegree : ${educationDegrees}" th:value="${educationDegree.educationDegreeId}" th:text="${educationDegree.educationDegreeName}"></option>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>Position:</td>
+            <td>
+                <select th:field="*{position}">
+                    <option th:each="position : ${positions}" th:value="${position.positionId}" th:text="${position.positionName}"></option>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>Division:</td>
+            <td>
+                <select th:field="*{division}">
+                    <option th:each="division : ${divisions}" th:value="${division.divisionId}" th:text="${division.divisionName}"></option>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Edit</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+
+</body>
+</html>
